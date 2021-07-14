@@ -1,0 +1,35 @@
+mat-card{
+    min-width: 25%;
+    // padding-top: 2rem;
+}
+.page-builder-container{
+    .row1{
+        .sub-addon-container{
+            display: inline-grid;
+            flex: 1;
+            margin-right: .25rem;
+            &:nth-child(2){
+                flex: 2;
+            }
+
+
+        }
+        display: flex;
+    }
+}
+
+
+
+.table-content{
+    height: 200px;
+    overflow-y: auto;
+
+
+}
+
+:host ::ng-deep pep-list {
+    .table-header {
+        top: 0 !important;
+    }
+}
+

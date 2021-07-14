@@ -1,0 +1,25 @@
+<div  class="page-builder-container" >
+<div class=" row1">
+        <div class="sub-addon-container" *ngFor="let addon of addons$ | async">
+            <mat-card>
+                <addon-proxy *ngIf="addon"
+                [hostObject]="addon"
+                (hostEvents)="onAddonChange($event);">
+            </addon-proxy>
+            </mat-card>
+        </div>
+</div>
+<br>
+    <div class="row2">
+        <addon-proxy *ngIf="carouselAddon"
+        [hostObject]="carouselAddon"
+        (hostEvents)="onAddonChange($event);">
+    </addon-proxy>
+ </div>
+
+
+
+
+</div>
+
+
