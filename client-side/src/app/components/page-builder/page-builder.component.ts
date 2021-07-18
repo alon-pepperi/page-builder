@@ -1,10 +1,8 @@
 import { ActivatedRoute } from '@angular/router';
 import { PepHttpService } from '@pepperi-addons/ngx-lib';
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { Observable, of, Subject, timer } from "rxjs";
-import { concatMap, timeout, catchError, map, tap, filter } from "rxjs/operators";
-import { RemoteModuleOptions } from './page-builder.model';
-import { Relation } from '../../../../../metadata';
+import { map } from "rxjs/operators";
 @Component({
   selector: 'pep-page-builder',
   templateUrl: './page-builder.component.html',
