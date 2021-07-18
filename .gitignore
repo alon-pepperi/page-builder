@@ -1,6 +1,6 @@
 publish/assets
-publish/*.js
-**/publish/*.js
+publish/
+**/publish/
 var_sk
 
 node_modules/
@@ -8,5 +8,3 @@ sub-addons/sub-addon-1/publish/
 sub-addons/sub-addon-2/publish/
 sub-addons/sub-addon-3/publish/
 sub-addons/sub-addon-4/publish/
-*.js
-*.js.map
