@@ -12,7 +12,7 @@ export class EmptyRouteComponent {}
 
 const routes: Routes = [
     {
-        path: `settings/:addon_uuid`,
+        path: `:settings/:addon_uuid`,
         children: [
             {
                 path: ':editor',

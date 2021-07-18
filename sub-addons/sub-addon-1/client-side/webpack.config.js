@@ -40,7 +40,8 @@ module.exports = (config, options, env) => {
                 shared: {
                   // ...deps,
                   "@angular/core": {  strictVersion: false  },
-                  "@angular/common": {strictVersion: false   }
+                  "@angular/common": {strictVersion: false   },
+
                 }
               })
 

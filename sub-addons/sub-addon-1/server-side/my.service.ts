@@ -8,16 +8,19 @@ class MyService {
     constructor(private client: Client) {
         this.papiClient = new PapiClient({
             baseURL: client.BaseURL,
-            token: client.OAuthAccessToken
+            token: client.OAuthAccessToken,
+            addonUUID: client.AddonUUID,
+            addonSecretKey: client.AddonSecretKey,
+            actionUUID: client.AddonUUID
         });
     }
 
-    doSomething() {
-        console.log("doesn't really do anything....");
+    getRelations(relationName: string): Promise<any> {
+        return this.papiClient.get(`/addons/data/relations?where=RelationName=${relationName}`);
     }
 
-    getAddons(): Promise<InstalledAddon[]> {
-        return this.papiClient.addons.installedAddons.find({});
+    createRelation(relation): Promise<any> {
+                return this.papiClient.post('/addons/data/relations', relation);
     }
 }
 

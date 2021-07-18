@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { PepNgxLibModule  } from '@pepperi-addons/ngx-lib';
 import { PageBuilderComponent} from './index';
-
 import { PepRemoteLoaderModule } from '@pepperi-addons/ngx-remote-loader';
 
 
@@ -21,6 +20,7 @@ import { PepRemoteLoaderModule } from '@pepperi-addons/ngx-remote-loader';
         PepRemoteLoaderModule,
         //// When not using module as sub-addon please remark this for not loading twice resources
         MatCardModule
+
         //// Example for importing tree-shakeable @pepperi-addons/ngx-lib components to a module
 
 

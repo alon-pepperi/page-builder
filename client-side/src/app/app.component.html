@@ -2,21 +2,28 @@
 
 </ng-container>
 <ng-template #singleSpa>
-    <div  class="addon-page-container single-spa">
-        <pep-top-bar [inline]="false" [title]="('Title_Addon' | translate)">
-            <div header-start-content>
-            </div>
-            <div header-end-content>
-                <pep-menu class="pep-spacing-element" [items]="menuItems" (menuItemClick)="onMenuItemClicked($event)">
-                </pep-menu>
-            </div>
-        </pep-top-bar>
+    <pep-page-layout>
+        <!-- <pep-side-bar [showHeader]="false" ></pep-side-bar> -->
+        <ng-container pep-top-area>
+            <pep-top-bar [inline]="false" [title]="('Title_Addon' | translate)">
+                <div header-start-content>
+                </div>
+                <div header-end-content>
+                    <pep-menu class="pep-spacing-element" [items]="menuItems" (menuItemClick)="onMenuItemClicked($event)">
+                    </pep-menu>
+                </div>
+            </pep-top-bar>
+        </ng-container>
+        <ng-container pep-main-area>
+
         <div class="main-content">
             <div class="content">
                 <router-outlet></router-outlet>
             </div>
         </div>
-    </div>
+        </ng-container>
+    </pep-page-layout>
+
 </ng-template>
 <ng-template #standalone>
     <div class="viewportDiv" #viewportDiv pepRtlDirection >
