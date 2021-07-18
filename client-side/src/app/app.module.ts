@@ -1,3 +1,4 @@
+import { PepPageLayoutModule } from '@pepperi-addons/ngx-lib/page-layout';
 import { PageBuilderModule } from './components/page-builder/index';
 import { PepMenuModule } from '@pepperi-addons/ngx-lib/menu';
 import { PepTopBarModule } from '@pepperi-addons/ngx-lib/top-bar';
@@ -14,6 +15,7 @@ import { createTranslateLoader } from './components/addon';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { PepFileService, PepAddonService } from '@pepperi-addons/ngx-lib';
+import { PepSideBarModule } from '@pepperi-addons/ngx-lib/side-bar';
 
 @NgModule({
     declarations: [
@@ -32,6 +34,8 @@ import { PepFileService, PepAddonService } from '@pepperi-addons/ngx-lib';
         PepIconModule,
         PepTopBarModule,
         PepMenuModule,
+        PepPageLayoutModule,
+        PepSideBarModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

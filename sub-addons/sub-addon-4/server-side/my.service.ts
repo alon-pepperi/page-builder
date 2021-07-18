@@ -12,12 +12,12 @@ class MyService {
         });
     }
 
-    doSomething() {
-        console.log("doesn't really do anything....");
+    getRelations(relationName: string): Promise<any> {
+        return this.papiClient.get(`/addons/data/relations?where=RelationName=${relationName}`);
     }
 
-    getAddons(): Promise<InstalledAddon[]> {
-        return this.papiClient.addons.installedAddons.find({});
+    createRelation(relation): Promise<any> {
+                return this.papiClient.post('/addons/data/relations', relation);
     }
 }
 
