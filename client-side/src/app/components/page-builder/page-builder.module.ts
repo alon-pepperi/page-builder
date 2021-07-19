@@ -6,7 +6,6 @@ import { PepNgxLibModule  } from '@pepperi-addons/ngx-lib';
 import { PageBuilderComponent} from './index';
 import { PepAddonLoaderModule } from '@pepperi-addons/ngx-remote-loader';
 
-import { PepRemoteLoaderModule } from '@pepperi-addons/ngx-remote-loader';
 import { SectionModule } from '../section/section.module'
 import { PepPageLayoutModule } from '@pepperi-addons/ngx-lib/page-layout';
 import { PepSelectModule } from '@pepperi-addons/ngx-lib/select';
