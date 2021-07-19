@@ -2,6 +2,8 @@ import { ActivatedRoute } from '@angular/router';
 import { PepHttpService } from '@pepperi-addons/ngx-lib';
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { Observable, of, Subject, timer } from "rxjs";
+import { SectionComponent } from '../section/section.component';
+
 import { map } from "rxjs/operators";
 @Component({
   selector: 'pep-page-builder',
@@ -16,6 +18,13 @@ export class PageBuilderComponent implements OnInit {
     @Input() hostObject: any;
     @Output() hostEvents: EventEmitter<any> = new EventEmitter<any>();
 
+    /* Todo - need to be removed into componnent */
+    public sectionColumnArray = new Array(3);
+    public numOfSectionColumns = [{key: '1',value: '1'},
+                                  {key: '2',value: '2'},
+                                  {key: '3',value: '3'},
+                                  {key: '4',value: '4'},
+                                  {key: '5',value: '5'}];
 
     constructor(
         private http: PepHttpService,
@@ -88,6 +97,10 @@ export class PageBuilderComponent implements OnInit {
         return this.http.postHttpCall('http://localhost:4500/api/relations', {RelationName: `PageComponent` });
         // return this.http.postPapiApiCall(`/addons/api/${addonUUID}/api/relations`, {RelationName: `PageComponent` });
 
+    }
+
+    numOfSectionColumnsChange(event){
+        this.sectionColumnArray = new Array(parseInt(event));
     }
 
 }

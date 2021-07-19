@@ -1,4 +1,28 @@
+<pep-page-layout>
+    <ng-container pep-side-area> 
+        <pep-select
+            value="3"
+            label="Number of columns"
+            type="select"
+            [mandatory]="false"
+            [disabled]="false"
+            xAlignment="left"
+            [options]= numOfSectionColumns
+            [showTitle]="true"
+            (valueChange)="numOfSectionColumnsChange($event)"
+            ></pep-select>  
+    </ng-container>
+    <ng-container pep-top-area>
+    </ng-container>
+    <ng-container pep-main-area>
+        <pep-section [sectionColumnArray]="sectionColumnArray"></pep-section>
+    </ng-container>
+</pep-page-layout>
+
+
+
 <div  class="page-builder-container" >
+
 <div class=" row1">
         <div class="sub-addon-container" *ngFor="let addon of addons$ | async">
             <mat-card>
