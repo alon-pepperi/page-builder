@@ -1,4 +1,3 @@
-import MyService from './my.service'
 import { Client, Request } from '@pepperi-addons/debug-server'
 
 // add functions here
