@@ -1,0 +1,24 @@
+.flex-container {
+
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        background-color: DodgerBlue;
+        width: 100%;
+        padding: 1rem;
+        flex-wrap: wrap;
+
+    .flex-item {
+        background-color: #f1f1f1;
+        min-width: 250px;
+        min-height: 250px;
+        margin: 10px;
+        flex: auto;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+    }
+  }
