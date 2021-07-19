@@ -1,20 +1,32 @@
 mat-card{
-    min-width: 25%;
+    // min-width: 25%;
     // padding-top: 2rem;
+}
+@media screen and (max-width: 1200px) {
+    .page-builder-container{
+        .row1{
+            flex-direction: column;
+            .sub-addon-container{
+                margin-bottom: .5rem;
+            }
+        }
+    }
 }
 .page-builder-container{
     .row1{
+        display: flex;
+
         .sub-addon-container{
             display: inline-grid;
             flex: 1;
             margin-right: .25rem;
-            &:nth-child(2){
-                flex: 2;
-            }
+            // &:nth-child(2){
+                // flex: 2;
+            // }
 
 
         }
-        display: flex;
+
     }
 }
 

@@ -51,8 +51,6 @@
               ],
               "optimization": true,
               "outputHashing": "none",
-              "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -68,12 +66,19 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ],
-              "customWebpackConfig": {
-                "path": "webpack.prod.config.js"
-              }
+              ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "outputHashing": "none"
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
@@ -84,8 +89,12 @@
           "configurations": {
             "production": {
               "browserTarget": "sub-addon:build:production"
+            },
+            "development": {
+                "browserTarget": "sub-addon:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         }
       }
     }

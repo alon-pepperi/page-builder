@@ -28,7 +28,7 @@ export const PageComponentRelations: Relation[]  =[
 
     {
         RelationName: "PageComponent",
-        Name:"SubAddon1Component",
+        Name:"SubAddon1",
         Description:"SubAddon1",
         Type: "Navigate",
         SubType: "PageBuilder",
@@ -39,7 +39,7 @@ export const PageComponentRelations: Relation[]  =[
     },
     {
         RelationName: "PageComponent",
-        Name:"SubAddon2Component",
+        Name:"SubAddon2",
         Description:"SubAddon2",
         Type: "NgComponent",
         SubType: "NG11",

@@ -15,12 +15,14 @@ import { SubAddon1Component } from './index';
 import {PepperiTableComponent} from './pepperi-table.component'
 import { MatDialogModule } from '@angular/material/dialog';
 import { PepDialogService } from '@pepperi-addons/ngx-lib/dialog';
+import { PepAddonLoaderService } from '@pepperi-addons/ngx-remote-loader';
+import { PepPageLayoutModule } from '@pepperi-addons/ngx-lib/page-layout';
 
-export function createTranslateLoader(http: HttpClient, fileService: PepFileService, addonService: PepAddonService) {
+import {config } from './addon.config';
+export function createTranslateLoader(http: HttpClient, fileService: PepFileService, addonLoaderService: PepAddonLoaderService) {
     const translationsPath: string = fileService.getAssetsTranslationsPath();
     const translationsSuffix: string = fileService.getAssetsTranslationsSuffix();
-    const addonStaticFolder = 'http://localhost:4401/';
-    // const addonStaticFolder = addonService.getAddonStaticFolder();
+    const addonStaticFolder = addonLoaderService.getAddonPath(config.AddonUUID);
     return new MultiTranslateHttpLoader(http, [
         {
             prefix: addonStaticFolder + translationsPath,
@@ -30,10 +32,10 @@ export function createTranslateLoader(http: HttpClient, fileService: PepFileServ
             suffix: translationsSuffix,
         },
         {
-            prefix: addonStaticFolder + '/assets/i18n/',
+            prefix: addonStaticFolder + 'assets/i18n/',
             // addonStaticFolder.length > 0
             // ? addonStaticFolder
-            // :'/assets/i18n/',
+            // :'assets/i18n/',
             suffix: '.json',
         },
     ]);
@@ -54,7 +56,7 @@ export function createTranslateLoader(http: HttpClient, fileService: PepFileServ
             loader: {
                 provide: TranslateLoader,
                 useFactory: createTranslateLoader,
-                deps: [HttpClient, PepFileService, PepAddonService]
+                deps: [HttpClient, PepFileService, PepAddonLoaderService]
             }, isolate: false
         }),
         //// Example for importing tree-shakeable @pepperi-addons/ngx-lib components to a module
@@ -62,7 +64,8 @@ export function createTranslateLoader(http: HttpClient, fileService: PepFileServ
         PepButtonModule,
         PepSelectModule,
         PepTopBarModule,
-        PepListModule
+        PepListModule,
+        PepPageLayoutModule
 
 
     ],

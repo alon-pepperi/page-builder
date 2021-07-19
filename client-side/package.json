@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --live-reload=false",
+    "start": "ng serve --live-reload=false --sourceMap=true",
     "single-spa": "ng serve  --configuration SingleSpa --sourceMap=false --live-reload=false",
     "standalone": "ng serve --configuration Standalone --sourceMap=false --live-reload=false",
     "build": "ng build",
@@ -39,7 +39,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "@pepperi-addons/ngx-lib": "^0.1.250",
-    "@pepperi-addons/ngx-remote-loader": "0.0.22",
+    "@pepperi-addons/ngx-remote-loader": "0.0.24",
     "@pepperi-addons/papi-sdk": "^1.24.0",
     "@tweenjs/tween.js": "^17.1.1",
     "again": "0.0.1",
