@@ -70,7 +70,8 @@ function createRelationEntry(field: Relation, entryAddon){
         visibleEndpoint: field?.VisibilityRelativeURL,
         noModule: field?.Type === "NgComponent" && !(field?.ModuleName) ? true : false,
         update: false,
-        addon: entryAddon
+        addon: entryAddon,
+        layout: { section: 0, block: 0}
 
     }
     return menuEntry;

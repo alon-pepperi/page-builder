@@ -1,62 +1,15 @@
-<pep-page-layout>
-    <ng-container pep-side-area>
-        <pep-select
-            value="3"
-            label="Number of columns"
-            type="select"
-            [mandatory]="false"
-            [disabled]="false"
-            xAlignment="left"
-            [options]= numOfSectionColumns
-            [showTitle]="true"
-            (valueChange)="numOfSectionColumnsChange($event)"
-        ></pep-select>
-        <ng-container *ngFor="let col of sectionColumnArray">
-            <pep-textbox
-                value= "33"
-                label="Column width"
-                type="percentage"
-                textColor=""
-                xAlignment="left"
-                [showTitle]="true"
-                [renderTitle]="true"
-                [renderError]="true"
-                [renderSymbol]="true"
-            ></pep-textbox>
-    </ng-container>
-    </ng-container>
-    <ng-container pep-top-area>
-    </ng-container>
-    <ng-container pep-main-area>
-        <pep-section [sectionColumnArray]="sectionColumnArray"></pep-section>
-    </ng-container>
-</pep-page-layout>
 
-
-
-<div  class="page-builder-container" >
-
-<div class=" row1">
-        <div class="sub-addon-container" *ngFor="let addon of addons$ | async">
-            <mat-card>
-                <addon-proxy *ngIf="addon"
-                [hostObject]="addon"
-                (hostEvents)="onAddonChange($event);">
-            </addon-proxy>
-            </mat-card>
-        </div>
+<div class="flex-container" *ngFor="let sectionOfAddons of sections$ | async; let i = index;">
+    <div class="flex-item" *ngFor="let addon of sectionOfAddons">
+        <mat-card>
+            <addon-proxy *ngIf="addon"
+            [hostObject]="addon"
+            (hostEvents)="onAddonChange($event);">
+        </addon-proxy>
+        </mat-card>
+    </div>
 </div>
-<br>
-    <div class="row2">
-        <addon-proxy *ngIf="carouselAddon"
-        [hostObject]="carouselAddon"
-        (hostEvents)="onAddonChange($event);">
-    </addon-proxy>
- </div>
 
 
-
-
-</div>
 
 

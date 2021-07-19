@@ -3,8 +3,12 @@
 </ng-container>
 <ng-template #singleSpa>
     <pep-page-layout>
-        <!-- <pep-side-bar [showHeader]="false" ></pep-side-bar> -->
-        <ng-container pep-top-area>
+
+        <ng-container pep-side-area>
+
+        </ng-container>
+
+        <!-- <ng-container pep-top-area>
             <pep-top-bar [inline]="false" [title]="('Title_Addon' | translate)">
                 <div header-start-content>
                 </div>
@@ -13,14 +17,9 @@
                     </pep-menu>
                 </div>
             </pep-top-bar>
-        </ng-container>
+        </ng-container> -->
         <ng-container pep-main-area>
-
-        <div class="main-content">
-            <div class="content">
                 <router-outlet></router-outlet>
-            </div>
-        </div>
         </ng-container>
     </pep-page-layout>
 

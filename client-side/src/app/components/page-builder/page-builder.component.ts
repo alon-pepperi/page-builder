@@ -2,9 +2,8 @@ import { ActivatedRoute } from '@angular/router';
 import { PepHttpService } from '@pepperi-addons/ngx-lib';
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { Observable, of, Subject, timer } from "rxjs";
-import { SectionComponent } from '../section/section.component';
 
-import { map } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
 @Component({
   selector: 'pep-page-builder',
   templateUrl: './page-builder.component.html',
@@ -17,7 +16,7 @@ export class PageBuilderComponent implements OnInit {
     addons$: Observable<any[]>;
     @Input() hostObject: any;
     @Output() hostEvents: EventEmitter<any> = new EventEmitter<any>();
-
+    sections$: Observable<any[]>;
     /* Todo - need to be removed into componnent */
     public sectionColumnArray = new Array(3);
     public numOfSectionColumns = [{key: '1',value: '1'},
@@ -36,12 +35,18 @@ export class PageBuilderComponent implements OnInit {
     }
 
     ngOnInit(){
-        this.addons$ = this.getRelations(this.route.snapshot.params.addon_uuid)
+        this.sections$ = this.getRelations(this.route.snapshot.params.addon_uuid)
             .pipe(
                 map( res => {
-                    this.carouselAddon = res['relations'][res['relations'].length - 1];
+                    const array = [];
+                    const secondRow = res['relations'][res['relations'].length - 1];
                     res['relations'].pop();
-                    return res['relations'];
+                    res['relations'].forEach((relation, index) => relation.layout.block = index);
+                    res['relations'].sort((x,y) => x.layout.block - y.layout.block  );
+                    array.push(res['relations']);
+                    secondRow.layout.section = 1;
+                    array.push([secondRow]);
+                    return array;
                 }));
 
 
@@ -94,8 +99,8 @@ export class PageBuilderComponent implements OnInit {
     getRelations(addonUUID): Observable<any[]> {
 
         // debug locally
-        // return this.http.postHttpCall('http://localhost:4500/api/relations', {RelationName: `PageComponent` });
-        return this.http.postPapiApiCall(`/addons/api/${addonUUID}/api/relations`, {RelationName: `PageComponent` });
+        return this.http.postHttpCall('http://localhost:4500/api/relations', {RelationName: `PageComponent` });
+        // return this.http.postPapiApiCall(`/addons/api/${addonUUID}/api/relations`, {RelationName: `PageComponent` });
 
     }
 
@@ -108,7 +113,7 @@ export class PageBuilderComponent implements OnInit {
         for( let i=0; i<numOfColumns; i++){
             this.sectionColumnArray[i] = { 'id': i, 'width': colWidth};
         }
-        
+
     }
 
 }
