@@ -100,7 +100,15 @@ export class PageBuilderComponent implements OnInit {
     }
 
     numOfSectionColumnsChange(event){
-        this.sectionColumnArray = new Array(parseInt(event));
+        const numOfColumns = parseInt(event);
+        const colWidth = 100 / numOfColumns;
+
+        this.sectionColumnArray = new Array(numOfColumns);
+
+        for( let i=0; i<numOfColumns; i++){
+            this.sectionColumnArray[i] = { 'id': i, 'width': colWidth};
+        }
+        
     }
 
 }
