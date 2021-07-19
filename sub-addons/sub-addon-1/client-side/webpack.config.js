@@ -28,7 +28,7 @@ module.exports = (config, options, env) => {
             },
             plugins: [
               new ModuleFederationPlugin({
-                // remotes: {},
+            // remotes: {},
                 name: "sub_addon_1",
                 filename: "sub_addon_1.js",
                 exposes: {

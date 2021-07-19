@@ -25,8 +25,25 @@ export async function relations(client: Client, request: Request): Promise<{rela
 
 function createRelationEntry(field: Relation, entryAddon){
     const remoteEntryByType = (type, remoteName = 'remoteEntry') => {
+ 
         switch (type){
             case "NgComponent":
+                if (field?.ComponentName == 'SubAddon1Component'){
+                    const res = 'http://localhost:4401/sub_addon_1.js';
+                    return res;
+                }
+                if (field?.ComponentName == 'SubAddon2Component'){
+                    const res = 'http://localhost:4402/sub_addon_2.js';
+                    return res;
+                }
+                if (field?.ComponentName == 'SubAddon3Component'){
+                    const res = 'http://localhost:4403/sub_addon_3.js';
+                    return res;
+                }
+                if (field?.ComponentName == 'SubAddon4Component'){
+                    const res = 'http://localhost:4404/sub_addon_4.js';
+                    return res;
+                }
                 if (field?.AddonRelativeURL){
                     return entryAddon?.PublicBaseURL +  field?.AddonRelativeURL + '.js';
                 }

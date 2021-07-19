@@ -38,7 +38,8 @@ module.exports = (config, options, env) => {
                 shared: {
                   // ...deps,
                   "@angular/core": { eager: true, singleton: true,  strictVersion: false  },
-                  "@angular/common": { eager: true,singleton: true,strictVersion: false   }
+                  "@angular/common": { eager: true,singleton: true,strictVersion: false   },
+                  "rxjs": { eager: true,singleton: true,strictVersion: false   }
                 }
               })
             ],

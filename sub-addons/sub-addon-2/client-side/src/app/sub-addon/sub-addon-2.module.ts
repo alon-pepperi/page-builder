@@ -9,18 +9,18 @@ import { PepSelectModule } from '@pepperi-addons/ngx-lib/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MultiTranslateHttpLoader } from 'ngx-translate-multi-http-loader';
 import { PepImagesFilmstripModule } from '@pepperi-addons/ngx-lib/images-filmstrip';
-
+import { PepAddonLoaderService } from '@pepperi-addons/ngx-remote-loader';
+import {config } from './addon.config';
 
 export function createTranslateLoader(
   http: HttpClient,
   fileService: PepFileService,
-  addonService: PepAddonService
+  addonLoaderService: PepAddonLoaderService
 ) {
  
   const translationsPath: string = fileService.getAssetsTranslationsPath();
   const translationsSuffix: string = fileService.getAssetsTranslationsSuffix();
-  const addonStaticFolder = 'http://localhost:4402/';
-  // const addonStaticFolder = addonService.getAddonStaticFolder();
+  const addonStaticFolder = addonLoaderService.getAddonPath(config.AddonUUID);
   return new MultiTranslateHttpLoader(http, [
       {
           prefix: addonStaticFolder + translationsPath,
@@ -51,7 +51,7 @@ export function createTranslateLoader(
         loader: {
             provide: TranslateLoader,
             useFactory: createTranslateLoader,
-            deps: [HttpClient, PepFileService, PepAddonService]
+            deps: [HttpClient, PepFileService, PepAddonLoaderService]
         }, isolate: false
     }),
     // //// Example for importing tree-shakeable @pepperi-addons/ngx-lib components to a module

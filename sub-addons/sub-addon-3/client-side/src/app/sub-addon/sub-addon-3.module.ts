@@ -14,31 +14,25 @@ import { PepTopBarModule } from '@pepperi-addons/ngx-lib/top-bar';
 import { MultiTranslateHttpLoader } from 'ngx-translate-multi-http-loader';
 import { PepImagesFilmstripModule } from '@pepperi-addons/ngx-lib/images-filmstrip';
 import { PepRichHtmlTextareaModule } from '@pepperi-addons/ngx-lib/rich-html-textarea';
-
+import { PepAddonLoaderService } from '@pepperi-addons/ngx-remote-loader';
+import {config } from './addon.config';
 
 export function createTranslateLoader(
   http: HttpClient,
   fileService: PepFileService,
-  addonService: PepAddonService
+  addonLoaderService: PepAddonLoaderService
 ) {
-  const addonStaticFolder = 'http://localhost:4403/';
-  // const addonStaticFolder = addonService.getAddonStaticFolder();
+  const addonStaticFolder = addonLoaderService.getAddonPath(config.AddonUUID);
   const translationsPath: string = fileService.getAssetsTranslationsPath();
   const translationsSuffix: string = fileService.getAssetsTranslationsSuffix();
 
   return new MultiTranslateHttpLoader(http, [
     {
         prefix: addonStaticFolder + translationsPath,
-            // addonStaticFolder.length > 0
-            //     ? addonStaticFolder
-            //     : translationsPath,
         suffix: translationsSuffix,
     },
     {
-        prefix: addonStaticFolder + '/assets/i18n/',
-        // addonStaticFolder.length > 0
-        // ? addonStaticFolder
-        // :'/assets/i18n/',
+        prefix: addonStaticFolder + 'assets/i18n/',
         suffix: '.json',
     },
 ]);
@@ -56,7 +50,7 @@ export function createTranslateLoader(
         loader: {
             provide: TranslateLoader,
             useFactory: createTranslateLoader,
-            deps: [HttpClient, PepFileService, PepAddonService]
+            deps: [HttpClient, PepFileService, PepAddonLoaderService]
         }, isolate: false
     }),
     // //// Example for importing tree-shakeable @pepperi-addons/ngx-lib components to a module

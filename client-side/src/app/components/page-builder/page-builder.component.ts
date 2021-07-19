@@ -31,7 +31,7 @@ export class PageBuilderComponent implements OnInit {
             .pipe(
                 map( res => {
                     this.carouselAddon = res['relations'][res['relations'].length - 1];
-                    res['relations'].splice(res['relations'].length - 1, 1);
+                    res['relations'].pop();
                     return res['relations'];
                 }));
 
@@ -63,26 +63,30 @@ export class PageBuilderComponent implements OnInit {
         //         uuid: "f93658be-17b6-4c92-9df3-4e6c7151e038"
         //     }
         // ]);
-        this.carouselAddon = {
+        // this.carouselAddon = {
         // remoteEntry: 'https://cdn.staging.pepperi.com/Addon/Public/43265507-7ac4-44ab-8270-d3cf9b2608b4/0.0.5/sub_addon_4.js',
-        remoteEntry: 'http://localhost:4404/sub_addon_4.js',
-        remoteName: 'sub_addon_4',
-        exposedModule: './SubAddon4Module',
-        componentName: 'SubAddon4Component',
-        uuid: '43265507-7ac4-44ab-8270-d3cf9b2608b4'
-        };
+        // // remoteEntry: 'http://localhost:4404/sub_addon_4.js',
+        // remoteName: 'sub_addon_4',
+        // exposedModule: './SubAddon4Module',
+        // componentName: 'SubAddon4Component',
+        // uuid: '43265507-7ac4-44ab-8270-d3cf9b2608b4'
+        // };
 
     }
 
     onAddonChange(e){
+        // switch(e.action){
+        //     case 'addon-loaded':
 
+
+        // }
     }
 
     getRelations(addonUUID): Observable<any[]> {
 
         // debug locally
-        // return this.http.postHttpCall('http://localhost:4500/api/relations', {RelationName: `PageComponent` });
-        return this.http.postPapiApiCall(`/addons/api/${addonUUID}/api/relations`, {RelationName: `PageComponent` });
+        return this.http.postHttpCall('http://localhost:4500/api/relations', {RelationName: `PageComponent` });
+        // return this.http.postPapiApiCall(`/addons/api/${addonUUID}/api/relations`, {RelationName: `PageComponent` });
 
     }
 

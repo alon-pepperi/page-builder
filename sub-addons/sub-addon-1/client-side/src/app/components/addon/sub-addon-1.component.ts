@@ -1,5 +1,5 @@
 import { PepDialogData, PepDialogService } from '@pepperi-addons/ngx-lib/dialog';
-import {  map } from 'rxjs/operators';
+import {  map, tap } from 'rxjs/operators';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from "@angular/core";
 import { PepLayoutService, PepScreenSizeType } from '@pepperi-addons/ngx-lib';
@@ -20,9 +20,9 @@ export class SubAddon1Component implements OnInit {
     menuItems: Array<PepMenuItem> = [];
     showListActions = false;
     screenSize: PepScreenSizeType;
-    options: {key:string, value:string}[] = [];
+    options: {key:string, value:string}[] = [{key: "Option1", value: 'Option 1'},{key: "Option2", value: 'Option 2'}];
     dataSource$: Observable<any[]>
-    displayedColumns = ['Name', 'Description'];
+    displayedColumns = ['Name'];
     @Input() hostObject: any;
     @Output() hostEvents: EventEmitter<any> = new EventEmitter<any>();
     @ViewChild(PepperiTableComponent) table: PepperiTableComponent;
@@ -42,11 +42,12 @@ export class SubAddon1Component implements OnInit {
     }
 
     ngOnInit(){
-       this.dataSource$ = this.addonService.pepGet(`/addons/installed_addons`)
-       .pipe(
-           map((addons: InstalledAddon[]) =>
-             addons.filter(addon => addon?.Addon).map(addon => addon?.Addon))
-        );
+       this.dataSource$ = this.addonService.pepGet(`/items`)
+       .pipe(tap(res => this.hostEvents.emit({action: 'addon-loaded'})));
+    //    .pipe(
+    //        map((addons: InstalledAddon[]) =>
+    //          addons.filter(addon => addon?.Addon).map(addon => addon?.Addon))
+    //     );
     }
 
     openDialog(){
@@ -57,8 +58,8 @@ export class SubAddon1Component implements OnInit {
     }
 
     ngAfterViewInit(): void {
-        this.menuItems.push({key:'OpenDialog', text: 'Open Dialog' });
-        this.hostEvents.emit({action: 'addon2-loaded'});
+        this.menuItems.push({key:'OpenDialog', text: 'Edit' });
+        // this.hostEvents.emit({action: 'addon-loaded'});
     }
 
     onMenuItemClicked(e){

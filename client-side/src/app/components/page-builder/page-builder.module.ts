@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { PepNgxLibModule  } from '@pepperi-addons/ngx-lib';
 import { PageBuilderComponent} from './index';
-import { PepRemoteLoaderModule } from '@pepperi-addons/ngx-remote-loader';
+import { PepAddonLoaderModule } from '@pepperi-addons/ngx-remote-loader';
 
 
 
@@ -17,7 +17,7 @@ import { PepRemoteLoaderModule } from '@pepperi-addons/ngx-remote-loader';
         CommonModule,
         HttpClientModule,
         PepNgxLibModule,
-        PepRemoteLoaderModule,
+        PepAddonLoaderModule,
         //// When not using module as sub-addon please remark this for not loading twice resources
         MatCardModule
 
