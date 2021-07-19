@@ -8,6 +8,7 @@ import { PepRemoteLoaderModule } from '@pepperi-addons/ngx-remote-loader';
 import { SectionModule } from '../section/section.module'
 import { PepPageLayoutModule } from '@pepperi-addons/ngx-lib/page-layout';
 import { PepSelectModule } from '@pepperi-addons/ngx-lib/select';
+import { PepTextboxModule } from '@pepperi-addons/ngx-lib/textbox';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PepSelectModule } from '@pepperi-addons/ngx-lib/select';
         MatCardModule,
         SectionModule,
         PepPageLayoutModule,
-        PepSelectModule
+        PepSelectModule,
+        PepTextboxModule
 
 
         //// Example for importing tree-shakeable @pepperi-addons/ngx-lib components to a module

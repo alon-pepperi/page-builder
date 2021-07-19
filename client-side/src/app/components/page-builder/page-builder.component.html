@@ -1,5 +1,5 @@
 <pep-page-layout>
-    <ng-container pep-side-area> 
+    <ng-container pep-side-area>
         <pep-select
             value="3"
             label="Number of columns"
@@ -10,7 +10,20 @@
             [options]= numOfSectionColumns
             [showTitle]="true"
             (valueChange)="numOfSectionColumnsChange($event)"
-            ></pep-select>  
+        ></pep-select>
+        <ng-container *ngFor="let col of sectionColumnArray">
+            <pep-textbox
+                value= "33"
+                label="Column width"
+                type="percentage"
+                textColor=""
+                xAlignment="left"
+                [showTitle]="true"
+                [renderTitle]="true"
+                [renderError]="true"
+                [renderSymbol]="true"
+            ></pep-textbox>
+    </ng-container>
     </ng-container>
     <ng-container pep-top-area>
     </ng-container>
