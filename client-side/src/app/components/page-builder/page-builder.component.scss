@@ -45,7 +45,14 @@
 //     }
 // }
 
-
+// ::ng-deep pep-page-builder{
+//     display: inline-grid;
+//     gap: 1rem;
+//     .pep-main-area{
+//         display: inline-grid;
+//         gap: 1rem;
+//     }
+// }
 
 .flex-container {
 
@@ -54,14 +61,16 @@
     flex-direction: row;
     background-color: DodgerBlue;
     width: 100%;
-    padding: 1rem;
+    // padding: 1rem;
     flex-wrap: wrap;
+    gap: 1rem;
 
 .flex-item {
-    background-color: #f1f1f1;
+    // background-color: #f1f1f1;
     min-height: 250px;
-    margin: 10px;
+    // margin: 10px;
     flex: auto;
+    display: inline-grid;
 }
 }
 
