@@ -10,7 +10,7 @@ import { PepMenuItem } from '@pepperi-addons/ngx-lib/menu';
 
 
 @Component({
-  selector: 'addon-module-2',
+  selector: 'sub-addon-1',
   templateUrl: './sub-addon-1.component.html',
   styleUrls: ['./sub-addon-1.component.scss'],
   providers: [TranslatePipe]

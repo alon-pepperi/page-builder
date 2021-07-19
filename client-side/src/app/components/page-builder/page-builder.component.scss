@@ -64,6 +64,7 @@ $page-buildr-gap: 1rem;
     gap: $page-buildr-gap;
 
 .flex-item {
+    // min-height: 400px;
     // background-color: #f1f1f1;
     flex: auto;
     display: inline-grid;

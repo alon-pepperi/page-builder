@@ -44,12 +44,16 @@ function createRelationEntry(field: Relation, entryAddon){
                     const res = 'http://localhost:4404/sub_addon_4.js';
                     return res;
                 }
-                if (field?.AddonRelativeURL){
-                    return entryAddon?.PublicBaseURL +  field?.AddonRelativeURL + '.js';
+                 if (field?.ComponentName == 'SubAddon5Component'){
+                    const res = 'http://localhost:4405/sub_addon_5.js';
+                    return res;
                 }
-                else {
-                    return entryAddon?.PublicBaseURL +  remoteName + '.js';
-                }
+                // if (field?.AddonRelativeURL){
+                //     return entryAddon?.PublicBaseURL +  field?.AddonRelativeURL + '.js';
+                // }
+                // else {
+                //     return entryAddon?.PublicBaseURL +  remoteName + '.js';
+                // }
                 break;
             default:
                 return field?.AddonRelativeURL;

@@ -12,7 +12,6 @@ import { PepHttpService, PepFileService, PepNgxLibModule, PepAddonService, PepCu
 import { AddonComponent } from './index';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PepDialogService } from '@pepperi-addons/ngx-lib/dialog';
-import { PepperiTableModule } from '../pepperi-table/index';
 import { TranslateLoader, TranslateModule, TranslateService, TranslateStore } from '@ngx-translate/core';
 
 export function createTranslateLoader(http: HttpClient, fileService: PepFileService, addonService: PepAddonService) {
@@ -59,8 +58,7 @@ export function createTranslateLoader(http: HttpClient, fileService: PepFileServ
         PepNgxLibModule,
         PepButtonModule,
         PepSelectModule,
-        PepTopBarModule,
-        PepperiTableModule
+        PepTopBarModule
 
 
     ],
